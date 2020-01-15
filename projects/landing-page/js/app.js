@@ -104,3 +104,19 @@ for(let link of allLinks){
     });
 }
 
+/* 4. Add style when mouse hover it */ 
+
+
+allSectionElements.forEach(
+    function(section){
+        section.addEventListener("mouseover",
+        function(){
+            section.setAttribute("style", "font-style:italic; border: 2px solid red");
+        });
+
+        section.addEventListener("mouseleave",
+        function(){
+            section.setAttribute("style", "font-style:normal;");
+        });
+    }
+);

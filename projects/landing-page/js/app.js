@@ -1,4 +1,4 @@
-nsoo/**
+/**
  * 
  * Manipulating the DOM exercise.
  * Exercise programmatically builds navigation,
@@ -18,82 +18,89 @@ nsoo/**
  * 
 */
 
-const allSectionElements = document.querySelectorAll('section');
-// console.log(allSectionElements);
-
-const allNavbarLists = document.querySelector(".navbar__menu");
-// console.log(allNavbarLists);
+var allSectionElements = document.querySelectorAll('section');
+var allNavbarLists = document.querySelector(".navbar__menu");
 
 const sectionParaEle = document.querySelector(".landing__container").
     querySelector("p");
 const sectionPara1 = sectionParaEle.textContent;
 const sectionPara2 = sectionParaEle.nextElementSibling.textContent;
 
-/** 
- * total added number is (num-4) + 1 
- * So minmum num is 4
- * */
+var sectionCount = document.getElementsByTagName("section").length;
+//console.log(sectionCount);
 
-let tempContainer = document.createDocumentFragment();
-addList = function (num){
-    for(let i = 4; i <= num; i++){
+var mainTag = document.getElementsByTagName("section");
+/* spread operator will transform the HTML Collection as an array */
+var transfer = [...mainTag];
 
-        const paraElement = document.createElement("p")
-        
-        const newSection = document.createElement('section').
-            setAttribute("id", `section${i}`);
-        newSection.appendChild(paraElement).textContent(sectionPara1);
-        newSection.appendChild(paraElement).textContent(sectionPara2);
-        tempContainer.appendChild(newSection);
+
+
+/* 1. The number of <li> and <a> inside ul is decided by the number of sections */
+//console.log([...allSectionElements]);
+
+let sectionsArray = [...allSectionElements];
+createNavBarUls = function (){
+    let tempContainer = document.createDocumentFragment();
+    for(let i = 0; i < sectionsArray.length; i++){
+        let navId = sectionsArray[i].id;
+        let newLi = document.createElement("li");
+        let newA = document.createElement("a");
+        newA.setAttribute("class", "scroll");
+        newA.setAttribute("href", `#${navId}`);
+        newA.textContent = `Scroll to ${navId}`;
+
+        newLi.appendChild(newA);
+        tempContainer.append(newLi); 
     }
-    return(tempContainer);
-};
+    allNavbarLists.append(tempContainer);
+ };
+ createNavBarUls();
 
-// allSectionElements.appendChild.addList(4);
-console.log(addList(4));
+ /* 2. The scrollIntoVieww is not working now?? So I added the css to the scroill-behavior */
+
+ let allLinks = document.querySelectorAll("a");
+ for(let link of allLinks){
+     link.classList = "menu__link";
+     let selectedSec = document.querySelector(`${link.hash}`);
+     selectedSec.scrollIntoView(false);
+        // {
+        //  behavior: "smooth",
+        //  block: "center"
+        // });
+ }
+
+// createSections = function(){
+//     let tempContainer = document.createDocumentFragment();
+//     let newSection = document.createElement("section");
+//     let newSectionDiv = document.createElement("div");
+    
+//     newSection.setAttribute("id", `section${sectionCount}`);
+//     newSection.setAttribute("data-nav", `Section ${sectionCount}`);
+
+//     newSectionDiv.setAttribute("class", "landing__container");
+//     newSectionDiv.insertAdjacentHTML("afterbegin", 
+//         `<h2>Section ${sectionCount}</h2>
+//          <p>${sectionPara1}</p>
+//          <p>${sectionPara2}</p>`);
+//     newSection.appendChild(newSectionDiv);
+//     tempContainer.appendChild(newSection);
+//     //transfer.append(tempContainer);
+//     document.querySelector("main").appendChild(tempContainer);
+//  };
+
+// //createSections();
+
+// document.getElementById("addSections").addEventListener('click', function(){
+//     sectionCount += 1;
+//     createSections();
+// });
 
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-// createListInNavBar = function(className){
-//     let navElement = document.querySelector(className);
-// };
-
-// console.log(
-//     createListInNavBar("navbar_menu")
-// );
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
+/* 3. add active class: highLight & style when the nav link jumps to the URL */
+for(let link of allLinks){
+    link.addEventListener("click",
+    function(){
+        document.querySelector(`${link.hash}`).classList = "highLight";
+    });
+}
 

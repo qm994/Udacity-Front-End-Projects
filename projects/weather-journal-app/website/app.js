@@ -5,7 +5,6 @@ var apiKey = "&units=metric&APPID=8ed5ec8a8669511a1b37cc4b98e3427d";
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+1 +'.'+ d.getDate()+'.'+ d.getFullYear();
-console.log(newDate);
 
 
 // Fetch the data from openWeather API based on the zipcode
@@ -39,8 +38,11 @@ postWeatherAndUserRes = async (url, data) => {
     return await response.json();
 };
 
-
-
+const updateUI = (data) => {
+    document.getElementById("date").textContent = data.date;
+    document.getElementById("temp").textContent = data.temprature;
+    document.getElementById("content").textContent = data.userResponse;
+}
 
 // Add the eventlistener with the id = "generate"
 // there must be a callback functions after event type
@@ -64,16 +66,12 @@ document.querySelector("#generate").addEventListener("click",
             date: newDate,
             userResponse: inputText,
             temprature: retrievedWeatherData.main.temp
-        }).then(
-            data => {
-                getAPIData("http://localhost:8000/apiData").then(result => {
-                    console.log(result)
-                })
-            }
-        )
-        //let finalUpdate = await getAPIData("http://localhost:8000/apiData")
+        });
         
-        //console.log(finalUpdate);
+        let finalUpdate = await getAPIData("http://localhost:8000/apiData");
+        console.log(finalUpdate);
+        updateUI(finalUpdate);
+        
     }
  );
 

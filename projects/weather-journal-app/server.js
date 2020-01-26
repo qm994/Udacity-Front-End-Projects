@@ -36,11 +36,15 @@ app.post("/api", function(req, res){
     projectData["date"] = data.date;
     projectData["temprature"] = data.temprature;
     projectData["userResponse"] = data.userResponse;
-    //res.send(projectData);
+
+    // When we POST the request, we also need to res.send(); Otherwise
+    // we cannot get the data by GET method
+    res.send({});
 })
 
 
 
 app.get("/apiData", function(req, res){
+    console.log("data requested from API data");
     res.send(projectData);
 })

@@ -1,3 +1,5 @@
+// index.js is the the entry point of webpack to build the dependency tree,
+// and it will map all of our app assets and their dependencies
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')

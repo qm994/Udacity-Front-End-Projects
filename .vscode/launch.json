@@ -17,6 +17,23 @@
             "request": "launch",
             "name": "weather journal debug(mac)",
             "url": "file:///Users/ma/Desktop/Front-Project2/projects/weather-journal-app/website/index.html",
+
+            "webRoot": "${workspaceFolder}/index.html"
+        },
+
+
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "weather journal debug(dv01)",
+            "url": "file:///Users/qingyuan/fend/projects/weather-journal-app/website/index.html",
+            "webRoot": "${workspaceFolder}/index.html"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "landing page debug(dv01)",
+            "url": "file:///Users/qingyuan/fend/projects/landing-page/index.html",
             "webRoot": "${workspaceFolder}/index.html"
         },
 

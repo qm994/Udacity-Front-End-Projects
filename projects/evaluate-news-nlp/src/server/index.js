@@ -49,7 +49,9 @@ app.post("/api", function(req, res){
           console.log(projectData);
           res.send(projectData);
         } else{
-            res.send({message: "there is an error"});
+            projectData["message"] = "The url is not valid for API to do analysis!!!!";
+            res.send(projectData);
+            //res.send({message: "there is an error"});
         }
       });
       
@@ -68,7 +70,4 @@ app.listen(8080, function () {
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
-})
-app.get('/AylienData', function (req, res) {
-    res.send(projectData);
 })

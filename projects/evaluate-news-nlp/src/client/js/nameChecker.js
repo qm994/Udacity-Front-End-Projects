@@ -1,19 +1,15 @@
 async function checkForName(inputText) {
     console.log("::: Running checkForName :::", inputText);
-
-    //post the input text url to the server then 
-    //send to the Aylien API
-    //https://www.healthline.com/nutrition/10-proven-benefits-of-cinnamon
-    const response = await fetch("http://localhost:8080/api", {
-        method: "POST",
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(inputText)
-    })
-
-    return await response.json();
+    var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+    var url = new RegExp(regexQuery,"i");
+    var urlValid = "";
+    if(url.test(inputText)){
+        alert("URL is valid!");
+        return urlValid = "url is valid";
+    } else {
+        alert("URL is not valid!");
+    }
+    
 }
 
 export { checkForName }

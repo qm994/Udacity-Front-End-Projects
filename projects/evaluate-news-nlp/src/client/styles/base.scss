@@ -8,14 +8,24 @@ main {
     flex: 2;
 }
 
-section {
-    border: 2px dotted red;
-    max-width: 800px;
-    margin: 50px auto;
-}
-
-#confidence {
+%styleResponse {
     background-color: yellow;
     color: red;
     border: 2px dotted blue;
+}
+
+#confidence {
+    @extend %styleResponse;
+}
+
+#polarity {
+    @extend %styleResponse;
+}
+
+#subjectivity {
+    @extend %styleResponse;
+}
+
+#subjectivity_confidence {
+    @extend %styleResponse;
 }

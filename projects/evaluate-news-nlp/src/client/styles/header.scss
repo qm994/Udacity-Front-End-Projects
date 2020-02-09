@@ -1,5 +1,7 @@
 header {
+    color: red;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     padding: 10px 40px;
 }

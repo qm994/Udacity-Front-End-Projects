@@ -23,6 +23,7 @@ function handleSubmit(event) {
         document.getElementById('polarity').textContent = (res.polarity);
         document.getElementById('subjectivity').textContent = (res.subjectivity);
         document.getElementById('subjectivity_confidence').textContent = (res.subjectivity_confidence);
+        return res
     },function(error){
         throw new Error('You are using the invalid URL!!!!');
     })

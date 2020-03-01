@@ -11,6 +11,12 @@ module.exports = {
                 test: '/\.js$/',
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {// use the all these loaders apply to the files ended as .scss/css
+                test: /\.scss$/,
+                // all these loaders are chained together;
+                // And the chained loader runs from RIGHT TO LEFT 
+                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
             }
         ]
     },

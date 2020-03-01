@@ -4,7 +4,7 @@ function checkForName(inputText) {
     var url = new RegExp(regexQuery,"i");
     var urlValid = "";
     if(url.test(inputText)){
-        alert("URL is valid!");
+        //alert("URL is valid!");
         const result = 1;
         return result
     } else {

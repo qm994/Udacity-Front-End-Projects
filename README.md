@@ -2,11 +2,6 @@
 
 Front End Nanodegree Content & Project Resources
 
-## Table of Contents
-
-* [Projects](#projects)
-* [Courses](#courses)
-* [Style-Guide](#style-guide)
 
 ## Projects
 
